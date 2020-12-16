@@ -1,0 +1,53 @@
+@import '../../../variables';
+
+:host {
+  display: block;
+}
+
+.app-route-view__container {
+  min-height: 100px;
+  height: 100px;
+  color: $font-color-light;
+  text-shadow: 0 0 4px black;
+  display: flex;
+  background: black;
+}
+
+.app-route-view__location {
+  position: relative;
+  flex: 1 1 25%;
+  opacity: 0.3;
+  transition: flex-basis 200ms, opacity 200ms;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  border: 1px solid black;
+  overflow: hidden;
+
+  &--active {
+    flex-basis: 50%;
+    opacity: 1;
+  }
+
+  &--day { background: linear-gradient(0deg, rgba(2,0,36, 1) 2%, rgba(9,121,114,1) 35%, rgba(173,249,255,1) 100%); }
+  &--sunset { background: linear-gradient(0deg, rgba(2,0,36, 1) 2%, rgb(121, 109, 117) 35%, rgb(255, 97, 97) 100%); }
+  &--night { background: linear-gradient(0deg, rgba(2,0,36, 1) 2%, rgb(11, 23, 35) 35%, rgb(40, 45, 65) 100%); }
+}
+
+.app-route-view__description {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+}
+
+.app-route-view__time-of-day {
+  margin: 0;
+  font-size: 12px;
+}
+
+.app-route-view__location-name {
+  margin: 0;
+  font-size: 20px;
+}

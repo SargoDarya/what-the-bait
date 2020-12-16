@@ -1,0 +1,16 @@
+export enum Weather {
+  Clear,
+  Clouds,
+  Wind,
+  Thunder,
+  Spectral,
+  Thunderstorms,
+  Showers,
+  Rain,
+  Fog,
+  DustStorms,
+  HeatWaves,
+  Gales,
+  Blizzards,
+  Snow,
+}

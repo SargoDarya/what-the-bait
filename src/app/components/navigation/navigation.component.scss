@@ -1,0 +1,59 @@
+:host {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.app-navigation__brand {
+  color: white;
+  margin: 0;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.app-navigation__items  {
+  background: black;
+  margin: 0;
+  border-bottom: 2px solid white;
+}
+
+.app-navigation__item {
+  padding: 1rem 2rem;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: block;
+  border-bottom: 1px solid gray;
+
+  &--active {
+    background: #333;
+  }
+}
+
+@media (min-width: 1024px) {
+  :host {
+    position: relative;
+    backdrop-filter: none;
+    background: none;
+    max-width: 300px;
+    display: block;
+  }
+
+  .app-navigation__items  {
+    height: 100%;
+    border-bottom: none;
+    border-right: 2px solid white;
+    margin-right: .5rem;
+  }
+}

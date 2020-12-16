@@ -1,0 +1,21 @@
+:host {
+  color: white;
+}
+
+.app-list-of-routes__route {
+  font-size: 14px;
+  padding: .5rem 0;
+  display: flex;
+}
+
+.app-list-of-routes__route-time {
+  flex: 0 0 100px;
+}
+
+.app-list-of-routes__route-destination {
+  flex: 1 1 auto;
+}
+
+.app-list-of-routes__route-time-frame {
+  flex: 0 0 auto;
+}

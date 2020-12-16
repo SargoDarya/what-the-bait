@@ -1,0 +1,23 @@
+:host {
+  display: inline-block;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    box-shadow: 0 0 4px black, 0 0 2px inset white;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 3px 0 inset rgba(255, 255, 255, 0.5);
+    top: 0;
+    left: 0;
+  }
+}
+

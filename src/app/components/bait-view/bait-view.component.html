@@ -1,0 +1,31 @@
+<div class="app-bait-view__container">
+  <div class="app-bait-view__overview"
+       [ngClass]="{
+         'app-bait-view__overview--spectral': isSpectral
+       }">
+    <app-item-image
+        class="app-bait-view__bait-image"
+        [itemName]="BaitTranslation.get(baitRecommendation.bait)"></app-item-image>
+    <h1 class="app-bait-view__bait-name">{{ BaitTranslation.get(baitRecommendation.bait) }}</h1>
+    <h2 class="app-bait-view__bait-usage">{{ isSpectral ? 'Spectral Bait' : 'Main Bait' }}</h2>
+  </div>
+  <ul class="app-bait-view__fish-list">
+    <li
+        class="app-bait-view__fish"
+        [ngClass]="{
+          'app-bait-view__fish--triggers-spectral': fish.triggersSpectral
+        }"
+        *ngFor="let fish of baitRecommendation.fish">
+      <div class="app-bait-view__fish-bait">{{ BaitTranslation.get(baitRecommendation.bait) }}</div>
+      <div class="app-bait-view__fish-name">
+        {{ fish.name }}
+        <app-fish-type
+            *ngIf="fish.type"
+            [fishType]="fish.type"></app-fish-type>
+      </div>
+      <div class="app-bait-view__fish-tug">{{ getVisualTug(fish.tug) }}</div>
+      <div class="app-bait-view__points">{{ fish.points }}<br />{{ fish.points * 2 * fish.dhBonus }}</div>
+      <div>{{ fish.minBiteTime }} - {{ fish.maxBiteTime }}</div>
+    </li>
+  </ul>
+</div>

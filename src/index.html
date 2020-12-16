@@ -2,12 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>WhatTheBait</title>
+  <title>What The Bait</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+  <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    function hideAddressBar()
+    {
+      if(!window.location.hash)
+      {
+        if(document.height < window.outerHeight)
+        {
+          document.body.style.height = (window.outerHeight + 50) + 'px';
+        }
+
+        setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+      }
+    }
+
+    window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+    window.addEventListener("orientationchange", hideAddressBar );
+  </script>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>

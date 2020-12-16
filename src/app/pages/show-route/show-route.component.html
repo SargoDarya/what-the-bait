@@ -1,0 +1,11 @@
+<app-route-view
+    [route]="route$ | async"
+    [currentIndex]="currentStopIndex$ | async"
+    (selectLocation)="currentStopSource.next($event)"></app-route-view>
+<div class="app-show-route__bait-views">
+  <app-bait-view
+      [baitRecommendation]="currentMainBaitRecommendations$ | async"></app-bait-view>
+  <app-bait-view
+      [isSpectral]="true"
+      [baitRecommendation]="currentSpectralBaitRecommendations$ | async"></app-bait-view>
+</div>

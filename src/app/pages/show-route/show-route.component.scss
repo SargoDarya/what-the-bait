@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-show-route__bait-views {
+  display: flex;
+  flex: 1 1 auto;
+  background: black;
+}
+
+app-bait-view {
+  flex: 1 1 auto;
+}
+
+@media (orientation: portrait) {
+  app-bait-view {
+    flex: 0 0 auto;
+  }
+
+  .app-show-route__bait-views {
+    flex-direction: column;
+  }
+}

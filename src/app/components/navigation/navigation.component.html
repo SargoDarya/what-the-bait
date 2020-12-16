@@ -1,0 +1,38 @@
+<ul class="app-navigation__items">
+  <li><h1 class="app-navigation__brand">What the Bait?</h1></li>
+  <li>
+    <a
+        class="app-navigation__item"
+        [routerLink]="['about']"
+        [routerLinkActive]="'app-navigation__item--active'"
+        (click)="closeNavigation.emit()">About</a>
+  </li>
+  <!--li>
+    <a
+        class="app-navigation__item"
+        [routerLink]="['routes']"
+        [routerLinkActive]="'app-navigation__item--active'"
+        (click)="closeNavigation.emit()">Current Route</a>
+  </li-->
+  <li>
+    <a
+        class="app-navigation__item"
+        [routerLink]="['routes']"
+        [routerLinkActive]="'app-navigation__item--active'"
+        (click)="closeNavigation.emit()">Routes</a>
+  </li>
+  <li>
+    <a
+        class="app-navigation__item"
+        [routerLink]="['help']"
+        [routerLinkActive]="'app-navigation__item--active'"
+        (click)="closeNavigation.emit()">Help</a>
+  </li>
+  <li>
+    <a
+        class="app-navigation__item"
+        [routerLink]="['credits']"
+        [routerLinkActive]="'app-navigation__item--active'"
+        (click)="closeNavigation.emit()">Credits</a>
+  </li>
+</ul>

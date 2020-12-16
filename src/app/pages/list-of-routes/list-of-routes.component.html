@@ -9,7 +9,7 @@
 <ul class="app-list-of-routes__list">
   <li
       class="app-list-of-routes__route"
-      *ngFor="let route of routesForToday$ | async"
+      *ngFor="let route of nextRoutes$ | async"
       [routerLink]="['/route', route.id ]">
     <span class="app-list-of-routes__route-time">{{ formatDate(route.time) }}</span>
     <span class="app-list-of-routes__route-destination">{{ LocationTranslation.get(route.route.locations[2]) }}</span>

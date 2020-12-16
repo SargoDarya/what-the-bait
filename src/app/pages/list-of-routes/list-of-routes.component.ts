@@ -14,7 +14,7 @@ import { LocationTranslation } from 'src/app/enums';
 })
 export class ListOfRoutesComponent {
 
-  public routesForToday$ = this.timeService.currentDay$.pipe(
+  public nextRoutes$ = this.timeService.currentTime$.pipe(
     map((currentDay) => {
       const routeId = this.routeService.getRouteIdFromTime(currentDay);
 

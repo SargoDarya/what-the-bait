@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What The Bait</title>
+  <base href="/">
+  <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+  <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.811767eb9b6be6e53078.css"></head>
+<body>
+  <app-root></app-root>
+  <script>
+    function hideAddressBar()
+    {
+      if(!window.location.hash)
+      {
+        if(document.height < window.outerHeight)
+        {
+          document.body.style.height = (window.outerHeight + 50) + 'px';
+        }
+
+        setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+      }
+    }
+
+    window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+    window.addEventListener("orientationchange", hideAddressBar );
+  </script>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+<script src="runtime.e227d1a0e31cbccbf8ec.js" defer></script><script src="polyfills.4dc3b73f451c53467b36.js" defer></script><script src="main.7111a12cfa503b0e9491.js" defer></script></body>
+</html>

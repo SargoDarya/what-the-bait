@@ -9,7 +9,7 @@ import {
 } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-const TWO_HOURS = 60 * 60 * 2;
+const TWO_HOURS = 1000 * 60 * 60 * 2;
 
 @Injectable()
 export class RouteService {
@@ -44,23 +44,33 @@ export class RouteService {
     new Route(TimeOfDay.Sunset, [Location.Cieldales, Location.RhotanoSea, Location.RothlytSound]),
   ];
 
-  public getDateForRouteId(absoluteRouteId: number): Date {
-    return new Date(absoluteRouteId * TWO_HOURS * 1000);
+  /**
+   * Returns a date for a given routeId
+   */
+  public getDateForRouteId(routeId: number): Date {
+    return new Date((routeId) * TWO_HOURS);
   }
 
-  public getRouteFromRouteId(absoluteRouteId: number): Route {
+  public getRouteFromRouteId(routeId: number): Route {
     // align the number that is assigned to the next two hour block to the pattern array
-    const offset = 88;
-    const targetTime = (absoluteRouteId + offset) % this.pattern.length;
+    const offset = 84;
+    const targetTime = (routeId + offset) % this.pattern.length;
 
     const currentPatternIndex = ((targetTime >= this.pattern.length) ? (targetTime - this.pattern.length) : targetTime);
+    console.log(currentPatternIndex, this.pattern[ currentPatternIndex ]);
     return this.routes[ this.pattern[ currentPatternIndex ] - 1 ];
   }
 
+  /**
+   * Returns a continuous id based on 2 hours increments
+   */
   public getRouteIdFromTime(time: Date): number {
-    return Math.floor(time.getTime() / 1000 / TWO_HOURS);
+    return Math.floor(time.getTime() / TWO_HOURS);
   }
 
+  /**
+   * Returns a route from a time
+   */
   public getRouteFromTime(time: Date): Route {
     const absoluteRouteId = this.getRouteIdFromTime(time);
 

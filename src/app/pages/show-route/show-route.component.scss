@@ -8,6 +8,8 @@
   display: flex;
   flex: 1 1 auto;
   background: black;
+  overflow: auto;
+  max-width: 100%;
 }
 
 app-bait-view {

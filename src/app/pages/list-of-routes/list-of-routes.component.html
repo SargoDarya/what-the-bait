@@ -12,7 +12,9 @@
       *ngFor="let route of nextRoutes$ | async"
       [routerLink]="['/route', route.id ]">
     <span class="app-list-of-routes__route-time">{{ formatDate(route.time) }}</span>
-    <span class="app-list-of-routes__route-destination">{{ LocationTranslation.get(route.route.locations[2]) }}</span>
+    <span class="app-list-of-routes__route-destination">
+      <ng-container *ngFor="let location of route.route.locations; index as i">{{ LocationTranslation.get(location) }} {{ TimeOfDayTranslation.get(route.route.getDayTimeForStop(i)) }} - </ng-container>
+    </span>
     <span class="app-list-of-routes__route-time-frame"></span>
   </li>
 </ul>

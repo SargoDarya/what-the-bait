@@ -5,7 +5,7 @@ import {
   map
 } from 'rxjs/operators';
 import { format } from 'date-fns';
-import { LocationTranslation } from 'src/app/enums';
+import { LocationTranslation, TimeOfDayTranslation } from 'src/app/enums';
 
 @Component({
   selector: 'app-list-of-routes',
@@ -29,6 +29,7 @@ export class ListOfRoutesComponent {
   );
 
   public readonly LocationTranslation = LocationTranslation;
+  public readonly TimeOfDayTranslation = TimeOfDayTranslation;
 
   constructor(
     private readonly routeService: RouteService,

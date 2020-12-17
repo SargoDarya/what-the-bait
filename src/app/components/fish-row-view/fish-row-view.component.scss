@@ -1,48 +1,6 @@
 @import '../../../variables';
 
 :host {
-  display: block;
-  box-sizing: border-box;
-  border: 2px solid transparent;
-}
-
-.app-bait-view__container {
-  border: 2px solid #7b6e48;
-}
-
-.app-bait-view__bait-image {
-  float: left;
-  width: 52px;
-  height: 52px;
-  margin-right: 1rem;
-}
-
-.app-bait-view__bait-name {
-  margin: 0;
-}
-
-.app-bait-view__bait-usage {
-  margin: 0;
-  font-size: 14px;
-}
-
-.app-bait-view__overview {
-  padding: 1rem 2rem;
-  background: #313131;
-  color: $font-color-light;
-  text-shadow: 0 0 2px black;
-
-  &--spectral {
-    background: url('/assets/ui/Cruising_Effect.png');
-    background-size: cover;
-  }
-}
-
-.app-bait-view__fish-list {
-  margin: 0;
-}
-
-.app-bait-view__fish {
   display: flex;
   align-items: center;
   background: $table-row-even-bg;
@@ -54,35 +12,35 @@
     background: $table-row-odd-bg;
   }
 
-  &--triggers-spectral:nth-child(even) {
+  &.triggers-spectral:nth-child(even) {
     background: linear-gradient(0deg, rgba(74,210,222, 0.3) 0%, rgba(32,210,124, 0.3) 10%, $table-row-even-bg 50%),
     linear-gradient(90deg, rgba(74,210,222, 0.3) 0%, rgba(32,210,124, 0.3) 10%, rgba(0, 0, 0, 0) 50%);
   }
 
-  &--triggers-spectral:nth-child(odd) {
+  &.triggers-spectral:nth-child(odd) {
     background: linear-gradient(45deg, rgba(74,210,222, 0.1) 0%, rgba(32,210,124, 0.1) 2%, rgba(0, 0, 0, 0) 6%),
     linear-gradient(0deg, rgba(74,210,222, 0.3) 0%, rgba(32,210,124, 0.3) 10%, $table-row-odd-bg 50%);
   }
 }
 
-.app-bait-view__fish-bait {
+.app-fish-row-view__fish-bait {
   width: 4.25rem;
   overflow: hidden;
 }
 
-.app-bait-view__fish-name {
+.app-fish-row-view__fish-name {
   min-width: 10rem;
   font-weight: bold;
 }
 
-.app-bait-view__fish-tug {
+.app-fish-row-view__fish-tug {
   min-width: 1rem;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
 }
 
-.app-bait-view__points {
+.app-fish-row-view__points {
   text-align: right;
   min-width: 3rem;
   margin-right: 1rem;

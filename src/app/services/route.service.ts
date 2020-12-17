@@ -57,7 +57,6 @@ export class RouteService {
     const targetTime = (routeId + offset) % this.pattern.length;
 
     const currentPatternIndex = ((targetTime >= this.pattern.length) ? (targetTime - this.pattern.length) : targetTime);
-    console.log(currentPatternIndex, this.pattern[ currentPatternIndex ]);
     return this.routes[ this.pattern[ currentPatternIndex ] - 1 ];
   }
 

@@ -1,0 +1,27 @@
+.app-fish-table-view__header {
+  display: flex;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  align-items: flex-end;
+}
+
+.app-fish-table-view__fish-bait {
+  width: 4.25rem;
+  overflow: hidden;
+}
+
+.app-fish-table-view__fish-name {
+  min-width: 10rem;
+}
+
+.app-fish-table-view__fish-tug {
+  min-width: 1rem;
+  text-align: center;
+}
+
+.app-fish-table-view__points {
+  text-align: right;
+  min-width: 3rem;
+  margin-right: 1rem;
+}

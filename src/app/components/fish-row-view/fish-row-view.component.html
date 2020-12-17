@@ -1,0 +1,10 @@
+<div class="app-fish-row-view__fish-bait">{{ BaitTranslation.get(fish.preferredBait) }}</div>
+<div class="app-fish-row-view__fish-name">
+  {{ fish.name }}
+  <app-fish-type
+      *ngIf="fish.type"
+      [fishType]="fish.type"></app-fish-type>
+</div>
+<div class="app-fish-row-view__fish-tug">{{ getVisualTug(fish.tug) }}</div>
+<div class="app-fish-row-view__points">{{ fish.points }}<br />{{ fish.points * 2 * fish.dhBonus }}</div>
+<div>{{ fish.minBiteTime }} - {{ fish.maxBiteTime }}</div>

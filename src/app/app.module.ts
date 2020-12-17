@@ -21,6 +21,8 @@ import { StatusBarComponent } from './components/status-bar/status-bar.component
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HelpComponent } from './pages/help/help.component';
+import { FishRowViewComponent } from './components/fish-row-view/fish-row-view.component';
+import { FishTableViewComponent } from './components/fish-table-view/fish-table-view.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { HelpComponent } from './pages/help/help.component';
     StatusBarComponent,
     NavigationComponent,
     AboutComponent,
-    HelpComponent
+    HelpComponent,
+    FishRowViewComponent,
+    FishTableViewComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@ import { FishType } from '../../enums';
 
 @Component({
   selector: 'app-fish-type',
-  template: `<img [src]="imageSrc" />`,
+  template: `<img [src]="imageSource" />`,
   styleUrls: ['./fish-type.component.scss']
 })
 export class FishTypeComponent {
@@ -14,10 +14,10 @@ export class FishTypeComponent {
   private readonly IMAGE_SUFFIX = '.png';
 
   @Input() public set fishType(fishType: FishType) {
-    this.imageSrc = `${this.IMAGE_BASE_PATH}${this.getImageNameFromFishType(fishType)}${this.IMAGE_SUFFIX}`;
+    this.imageSource = `${this.IMAGE_BASE_PATH}${this.getImageNameFromFishType(fishType)}${this.IMAGE_SUFFIX}`;
   }
 
-  public imageSrc = '';
+  public imageSource = '';
 
   private getImageNameFromFishType(fishType: FishType): string {
     switch (fishType) {

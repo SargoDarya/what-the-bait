@@ -1,0 +1,10 @@
+<div class="app-fish-table-view__header">
+  <span class="app-fish-table-view__fish-bait">Bait</span>
+  <span class="app-fish-table-view__fish-name">Name</span>
+  <span class="app-fish-table-view__fish-tug">Tug</span>
+  <span class="app-fish-table-view__points">Points<br />HQ + DH</span>
+  <span class="app-fish-table-view__line-time">Line Time</span>
+</div>
+<app-fish-row-view
+    *ngFor="let fish of fishes"
+    [fish]="fish"></app-fish-row-view>

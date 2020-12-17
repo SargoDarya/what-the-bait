@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="19eb440107e5d4952e98b9f22d06501cb4442be9" datatype="html">
+        <source>Sailing Schedule</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/list-of-routes/list-of-routes.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="460056e44709275407344ebeaf6d8a2e4a39977e" datatype="html">
+        <source>Registration (LT)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/list-of-routes/list-of-routes.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a7369891e88cd613e45a39b55a282c97776d05f5" datatype="html">
+        <source>Destination</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/list-of-routes/list-of-routes.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f9c0bd516f925ba83a16a76365b60f1384a2a31d" datatype="html">
+        <source>Time Frame</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/list-of-routes/list-of-routes.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

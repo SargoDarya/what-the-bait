@@ -10,7 +10,7 @@ import { FishType } from '../../enums';
   styleUrls: ['./fish-type.component.scss']
 })
 export class FishTypeComponent {
-  private readonly IMAGE_BASE_PATH = '/assets/ui/';
+  private readonly IMAGE_BASE_PATH = 'assets/ui/';
   private readonly IMAGE_SUFFIX = '.png';
 
   @Input() public set fishType(fishType: FishType) {

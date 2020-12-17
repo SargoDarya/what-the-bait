@@ -9,7 +9,7 @@ import {
   styleUrls: ['./item-image.component.scss']
 })
 export class ItemImageComponent {
-  private readonly IMAGE_BASE_PATH = '/assets/items/';
+  private readonly IMAGE_BASE_PATH = 'assets/items/';
   private readonly IMAGE_FILE_SUFFIX = '.png';
 
   @Input() public set itemName(value: string) {

@@ -19,6 +19,8 @@ import { CreditsComponent } from './pages/credits/credits.component';
 import { ShowRouteComponent } from './pages/show-route/show-route.component';
 import { StatusBarComponent } from './components/status-bar/status-bar.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { AboutComponent } from './pages/about/about.component';
+import { HelpComponent } from './pages/help/help.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     CreditsComponent,
     ShowRouteComponent,
     StatusBarComponent,
-    NavigationComponent
+    NavigationComponent,
+    AboutComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,

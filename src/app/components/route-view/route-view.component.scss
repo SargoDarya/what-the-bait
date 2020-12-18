@@ -5,8 +5,8 @@
 }
 
 .app-route-view__container {
-  min-height: 100px;
-  height: 100px;
+  min-height: 6.25rem;
+  height: 6.25rem;
   color: $font-color-light;
   text-shadow: 0 0 4px black;
   display: flex;
@@ -44,11 +44,11 @@
 
 .app-route-view__time-of-day {
   margin: 0;
-  font-size: 12px;
+  font-size: .75rem;
 }
 
 .app-route-view__location-name {
   margin: 0;
-  font-size: 20px;
+  font-size: 1.25rem;
   white-space: nowrap;
 }

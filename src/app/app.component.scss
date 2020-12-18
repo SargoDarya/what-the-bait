@@ -9,3 +9,14 @@
   flex: 1 1 auto;
   max-width: 100%;
 }
+
+@media
+screen and (-webkit-min-device-pixel-ratio: 2),
+screen and (min-resolution: 192dpi),
+screen and (min-resolution: 2dppx) {
+
+  ::ng-deep html {
+    font-size: 10px;
+  }
+
+}

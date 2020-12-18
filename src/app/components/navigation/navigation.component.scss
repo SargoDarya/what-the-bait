@@ -4,7 +4,7 @@
   left: 0;
   position: absolute;
   z-index: 1;
-  min-width: 200px;
+  min-width: 300px;
   width: 100%;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
@@ -17,10 +17,9 @@
 
 .app-navigation__brand {
   color: white;
-  margin: 0;
+  margin: 0 0 2rem;
   text-align: center;
   padding-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 .app-navigation__items  {
@@ -37,6 +36,7 @@
   font-weight: bold;
   display: block;
   border-bottom: 1px solid gray;
+  font-size: 16px;
 
   &--active {
     background: #333;

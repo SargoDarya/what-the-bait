@@ -12,3 +12,12 @@ ul {
   list-style: none;
   padding: 0;
 }
+
+// Gradient component for style reasons. You know. For style.
+hr {
+  height: 2px;
+  margin: 0;
+  border: 0;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+}

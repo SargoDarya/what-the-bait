@@ -2,24 +2,41 @@
 
 :host {
   display: block;
-  height: 2rem;
   background: #333333;
   margin-bottom: 2px;
+  position: relative;
 }
 
-.app-status-bar__toggle-button {
+.app-status-bar__button {
   background: none;
-  border: none;
   color: $font-color-light;
+  cursor: pointer;
   font-size: 16px;
-  line-height: 2rem;
   font-weight: bold;
-  margin-left: 2rem;
-  padding: 0;
+  border: 1px solid $font-color-light;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.app-status-bar__menu-hint {
+  font-size: 20px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.app-status-bar__up-arrow {
+  height: 100px;
+  margin-left: 50px;
+  float: left;
 }
 
 @media (min-width: 1024px) {
   :host {
+    display: none;
+  }
+
+  .app-status-bar__up-arrow {
     display: none;
   }
 }

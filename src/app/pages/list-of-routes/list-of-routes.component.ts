@@ -2,10 +2,22 @@ import { Component } from '@angular/core';
 import { RouteService } from '../../services/route.service';
 import { TimeService } from '../../services/time.service';
 import {
-  map
+  map,
+  shareReplay
 } from 'rxjs/operators';
-import { format } from 'date-fns';
+import {
+  addMinutes,
+  differenceInSeconds,
+  format,
+  formatDuration,
+  intervalToDuration
+} from 'date-fns';
 import { LocationTranslation, TimeOfDayTranslation } from 'src/app/enums';
+import {
+  combineLatest,
+  Observable
+} from 'rxjs';
+import { Route } from '../../models/route';
 
 @Component({
   selector: 'app-list-of-routes',
@@ -14,7 +26,7 @@ import { LocationTranslation, TimeOfDayTranslation } from 'src/app/enums';
 })
 export class ListOfRoutesComponent {
 
-  public nextRoutes$ = this.timeService.currentTime$.pipe(
+  public nextRoutes$: Observable<{ id: number, route: Route, time: Date }[]> = this.timeService.currentTime$.pipe(
     map((currentDay) => {
       const routeId = this.routeService.getRouteIdFromTime(currentDay);
 
@@ -25,8 +37,29 @@ export class ListOfRoutesComponent {
           time: this.routeService.getDateForRouteId(routeId + i)
         };
       });
-    })
+    }),
+    shareReplay(1)
   );
+
+  public timeLeftForRegistration$ = combineLatest([ this.nextRoutes$, this.timeService.currentTime$ ])
+    .pipe(
+      map(([ nextRoutes, currentTime ]) => {
+        const endOfRegistration = addMinutes(nextRoutes[0].time, 15);
+
+        if (currentTime > endOfRegistration) {
+          return `Registration has ended`;
+        } else {
+          return `Registration ends in: ${formatDuration(intervalToDuration({ end: addMinutes(nextRoutes[0].time, 15), start: currentTime }))}`;
+        }
+      })
+    );
+
+  public registrationStartsIn$ = combineLatest([ this.nextRoutes$, this.timeService.currentTime$ ])
+    .pipe(
+      map(([ nextRoutes, currentTime ]) => {
+        return formatDuration(intervalToDuration({ end: nextRoutes[1].time, start: currentTime }));
+      })
+    );
 
   public readonly LocationTranslation = LocationTranslation;
   public readonly TimeOfDayTranslation = TimeOfDayTranslation;
@@ -38,5 +71,9 @@ export class ListOfRoutesComponent {
 
   public formatDate(date: Date): string {
     return format(date, 'd/M HH:mm');
+  }
+
+  public trackByRouteId(index: number, route: any): number {
+    return route.id;
   }
 }

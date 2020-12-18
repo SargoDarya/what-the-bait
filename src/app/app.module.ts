@@ -19,10 +19,11 @@ import { CreditsComponent } from './pages/credits/credits.component';
 import { ShowRouteComponent } from './pages/show-route/show-route.component';
 import { StatusBarComponent } from './components/status-bar/status-bar.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { AboutComponent } from './pages/about/about.component';
 import { HelpComponent } from './pages/help/help.component';
 import { FishRowViewComponent } from './components/fish-row-view/fish-row-view.component';
 import { FishTableViewComponent } from './components/fish-table-view/fish-table-view.component';
+import { TimeOfDayImageComponent } from './components/time-of-day-image/time-of-day-image.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -37,10 +38,11 @@ import { FishTableViewComponent } from './components/fish-table-view/fish-table-
     ShowRouteComponent,
     StatusBarComponent,
     NavigationComponent,
-    AboutComponent,
     HelpComponent,
     FishRowViewComponent,
-    FishTableViewComponent
+    FishTableViewComponent,
+    TimeOfDayImageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

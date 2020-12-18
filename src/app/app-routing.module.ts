@@ -3,13 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListOfRoutesComponent } from './pages/list-of-routes/list-of-routes.component';
 import { ShowRouteComponent } from './pages/show-route/show-route.component';
 import { CreditsComponent } from './pages/credits/credits.component';
-import { AboutComponent } from './pages/about/about.component';
 import { HelpComponent } from './pages/help/help.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
-    path: 'about',
-    component: AboutComponent
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'routes',
@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'credits',
     component: CreditsComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
   }
 ];
 

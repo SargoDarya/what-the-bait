@@ -2,12 +2,6 @@ import { Injectable } from '@angular/core';
 import { TimeService } from './time.service';
 import { Route } from '../models/route';
 import { Location, TimeOfDay } from '../enums';
-import {
-  map,
-  shareReplay,
-  tap
-} from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 const TWO_HOURS = 1000 * 60 * 60 * 2;
 

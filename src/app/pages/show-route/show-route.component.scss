@@ -2,11 +2,12 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 100%;
+  overflow: hidden;
 }
 
 .app-show-route__bait-views {
   display: flex;
-  flex: 1 1 auto;
+  flex: 1 1 100%;
   background: black;
   overflow: auto;
   max-width: 100%;

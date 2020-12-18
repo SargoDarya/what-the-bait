@@ -1,3 +1,12 @@
 <button
-    class="app-status-bar__toggle-button"
-    (click)="showMenu.emit(!isMenuVisible)">Show Navigation</button>
+    class="app-status-bar__button"
+    (click)="showMenu.emit(!isMenuVisible)">Show Menu</button>
+
+<div class="app-status-bar__menu-hint"
+     *ngIf="!isMenuNotificationDismissed">
+  <img
+      src="/assets/ui/red_arrow_up.png"
+      class="app-status-bar__up-arrow" />
+  <p>I was told this button was hard to notice so you can open the menu by clicking on the button labeled "Show Menu".</p>
+  <button class="app-status-bar__button" (click)="dismissMenuNotification()">Got it.</button>
+</div>

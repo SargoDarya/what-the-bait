@@ -4,6 +4,12 @@
   display: block;
   box-sizing: border-box;
   border: 2px solid transparent;
+  min-width: 400px;
+
+  @media (orientation: portrait) {
+    min-width: unset;
+    width: 100%;
+  }
 }
 
 .app-bait-view__container {

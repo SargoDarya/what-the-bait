@@ -1,27 +1,44 @@
+:host {
+  display: grid;
+  grid-template-columns: [bait] 4fr
+                         [name] 9fr
+                         [tug] 3fr
+                         [points] 3fr
+                         [linetime] 4fr;
+}
+
 .app-fish-table-view__header {
-  display: flex;
+  display: grid;
+  grid-template-columns: inherit;
+  grid-column: 1/6;
   color: white;
   font-size: 12px;
   font-weight: bold;
   align-items: flex-end;
+  white-space: nowrap;
+  padding: .25rem 0;
 }
 
 .app-fish-table-view__fish-bait {
-  width: 4.25rem;
   overflow: hidden;
+  grid-column: bait;
 }
 
 .app-fish-table-view__fish-name {
-  min-width: 10rem;
+  grid-column: name;
 }
 
 .app-fish-table-view__fish-tug {
-  min-width: 1rem;
   text-align: center;
+  grid-column: tug;
 }
 
 .app-fish-table-view__points {
   text-align: right;
-  min-width: 3rem;
-  margin-right: 1rem;
+  grid-column: points;
+}
+
+.app-fish-table-view__line-time {
+  grid-column: linetime;
+  text-align: center;
 }

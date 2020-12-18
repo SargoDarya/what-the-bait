@@ -1,11 +1,13 @@
 @import '../../../variables';
 
 :host {
-  display: flex;
+  display: grid;
+  grid-template-columns: inherit;
+  grid-column: 1/6;
   align-items: center;
   background: $table-row-even-bg;
   color: $font-color-light;
-  padding: 0.25rem 2rem;
+  padding: 0.25rem 0;
   font-size: 12px;
 
   &:nth-child(odd) {
@@ -24,24 +26,28 @@
 }
 
 .app-fish-row-view__fish-bait {
-  width: 4.25rem;
   overflow: hidden;
+  grid-column: bait;
 }
 
 .app-fish-row-view__fish-name {
-  min-width: 10rem;
   font-weight: bold;
+  grid-column: name;
 }
 
 .app-fish-row-view__fish-tug {
-  min-width: 1rem;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
+  grid-column: tug;
 }
 
 .app-fish-row-view__points {
   text-align: right;
-  min-width: 3rem;
-  margin-right: 1rem;
+  grid-column: points;
+}
+
+.app-fish-row-view__line-time {
+  grid-column: linetime;
+  text-align: center;
 }

@@ -7,7 +7,6 @@ import {
 } from 'rxjs/operators';
 import {
   addMinutes,
-  differenceInSeconds,
   format,
   formatDuration,
   intervalToDuration
@@ -26,14 +25,18 @@ import { Route } from '../../models/route';
 })
 export class ListOfRoutesComponent {
 
-  public nextRoutes$: Observable<{ id: number, route: Route, time: Date }[]> = this.timeService.currentTime$.pipe(
+  public nextRoutes$: Observable<{ id: number, route: Route, routeScore: number, time: Date }[]> = this.timeService.currentTime$.pipe(
     map((currentDay) => {
       const routeId = this.routeService.getRouteIdFromTime(currentDay);
 
       return Array.from({ length: 12 }).map((_, i) => {
+        const route = this.routeService.getRouteFromRouteId(routeId + i);
+        const routeScore = this.routeService.getCalculatedRouteScore(route);
+
         return {
           id: routeId + i,
-          route: this.routeService.getRouteFromRouteId(routeId + i),
+          route,
+          routeScore,
           time: this.routeService.getDateForRouteId(routeId + i)
         };
       });

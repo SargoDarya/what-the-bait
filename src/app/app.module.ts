@@ -24,6 +24,7 @@ import { FishRowViewComponent } from './components/fish-row-view/fish-row-view.c
 import { FishTableViewComponent } from './components/fish-table-view/fish-table-view.component';
 import { TimeOfDayImageComponent } from './components/time-of-day-image/time-of-day-image.component';
 import { HomeComponent } from './pages/home/home.component';
+import { StarRecommendationComponent } from './components/star-recommendation/star-recommendation.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { HomeComponent } from './pages/home/home.component';
     FishRowViewComponent,
     FishTableViewComponent,
     TimeOfDayImageComponent,
-    HomeComponent
+    HomeComponent,
+    StarRecommendationComponent
   ],
   imports: [
     BrowserModule,

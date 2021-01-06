@@ -1,9 +1,16 @@
 <div class="app-route-view__container">
-  <div class="app-route-view__location"
-      *ngFor="let location of route.locations; index as i"
-      [ngClass]="getClassesForLocation(i)"
-      (click)="selectLocation.emit(i)">
-    <h2 class="app-route-view__time-of-day">{{ TimeOfDayTranslation.get(route.getDayTimeForStop(i)) }}</h2>
-    <h1 class="app-route-view__location-name">{{ LocationTranslation.get(location) }}</h1>
+  <div
+    class="app-route-view__location"
+    *ngFor="let location of route.locations; index as i"
+    [ngClass]="getClassesForLocation(i)"
+    (click)="selectLocation.emit(i)"
+  >
+    <h2 class="app-route-view__time-of-day">
+      {{ TimeOfDayTranslation.get(route.getDayTimeForStop(i)) }}
+    </h2>
+    <h1 class="app-route-view__location-name">
+      {{ LocationTranslation.get(location) }}
+    </h1>
   </div>
+  <app-bait-resumee route="route"></app-bait-resumee>
 </div>

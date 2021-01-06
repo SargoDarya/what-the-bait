@@ -1,26 +1,42 @@
 <ul class="app-list-of-routes__list">
   <li
-      class="app-list-of-routes__route"
-      *ngFor="let route of nextRoutes$ | async; index as routeIndex; trackBy: trackByRouteId"
-      [ngClass]="{
-        'app-list-of-routes__route--current': routeIndex === 0,
-        'app-list-of-routes__route--next': routeIndex === 1
-      }"
-      [routerLink]="['/route', route.id ]">
+    class="app-list-of-routes__route"
+    *ngFor="
+      let route of nextRoutes$ | async;
+      index as routeIndex;
+      trackBy: trackByRouteId
+    "
+    [ngClass]="{
+      'app-list-of-routes__route--current': routeIndex === 0,
+      'app-list-of-routes__route--next': routeIndex === 1
+    }"
+    [routerLink]="['/route', route.id]"
+  >
     <div class="app-list-of-routes__route-main-info">
-      <span class="app-list-of-routes__route-time">{{ formatDate(route.time) }}</span>
+      <span class="app-list-of-routes__route-time">{{
+        formatDate(route.time)
+      }}</span>
       <span class="app-list-of-routes__route-destination">
-        <span class="app-list-of-routes__route-destination-name">{{ LocationTranslation.get(route.route.locations[2]) }}</span> by
-        <span class="app-list-of-routes__route-destination-time">{{ TimeOfDayTranslation.get(route.route.getDayTimeForStop(2)) }}</span>
+        <span class="app-list-of-routes__route-destination-name">{{
+          LocationTranslation.get(route.route.locations[2])
+        }}</span>
+        by
+        <span class="app-list-of-routes__route-destination-time">{{
+          TimeOfDayTranslation.get(route.route.getDayTimeForStop(2))
+        }}</span>
       </span>
       <span class="app-list-of-routes__route-time-frame">
-        <ng-container *ngFor="let location of route.route.locations; index as i">
+        <ng-container
+          *ngFor="let location of route.route.locations; index as i"
+        >
           <img
-               class="app-list-of-routes__route-index"
-               [src]="'/assets/ui/stop_' + (i+1) + '.png'" />
+            class="app-list-of-routes__route-index"
+            [src]="'/assets/ui/stop_' + (i + 1) + '.png'"
+          />
           <app-time-of-day-image
-              [timeOfDay]="route.route.getDayTimeForStop(i)"
-              [isActive]="false"></app-time-of-day-image>
+            [timeOfDay]="route.route.getDayTimeForStop(i)"
+            [isActive]="false"
+          ></app-time-of-day-image>
         </ng-container>
       </span>
     </div>
@@ -28,17 +44,24 @@
     <div class="app-list-of-routes__route-sub-info">
       <ul>
         <li
-            class="app-list-of-routes__route-location"
-            *ngFor="let location of route.route.locations; index as i">{{ LocationTranslation.get(location) }}</li>
+          class="app-list-of-routes__route-location"
+          *ngFor="let location of route.route.locations; index as i"
+        >
+          {{ LocationTranslation.get(location) }}
+        </li>
       </ul>
     </div>
     <hr *ngIf="routeIndex <= 1" />
-    <div class="app-list-of-routes__remaining-registration-time"
-        *ngIf="routeIndex === 0">
+    <div
+      class="app-list-of-routes__remaining-registration-time"
+      *ngIf="routeIndex === 0"
+    >
       {{ timeLeftForRegistration$ | async }}
     </div>
-    <div class="app-list-of-routes__time-until-registration-start"
-        *ngIf="routeIndex === 1">
+    <div
+      class="app-list-of-routes__time-until-registration-start"
+      *ngIf="routeIndex === 1"
+    >
       Registration starts in: {{ registrationStartsIn$ | async }}
     </div>
   </li>

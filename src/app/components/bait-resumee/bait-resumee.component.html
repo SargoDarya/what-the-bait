@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let baitRecommendation of recommendedBaits">
+    <app-item-image
+      class="app-bait-view__bait-image"
+      [itemName]="BaitTranslation.get(baitRecommendation.bait)"
+    ></app-item-image>
+  </li>
+</ul>

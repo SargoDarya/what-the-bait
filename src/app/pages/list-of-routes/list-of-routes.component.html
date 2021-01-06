@@ -42,7 +42,6 @@
             [isActive]="false"
           ></app-time-of-day-image>
         </ng-container>
-        <app-bait-resumee [route]="route.route"></app-bait-resumee>
       </span>
     </div>
     <hr />
@@ -55,6 +54,7 @@
           {{ LocationTranslation.get(location) }}
         </li>
       </ul>
+      <app-bait-resumee [route]="route.route"></app-bait-resumee>
     </div>
     <hr *ngIf="routeIndex <= 1" />
     <div

@@ -20,15 +20,15 @@ export class BaitResumeeComponent implements OnInit {
   private BAITS_PER_LOCATION = 20;
   private BAITS_PER_CURRENT = 20;
 
-  recommendedBaits: Set<BaitRecommendation>;
+  recommendedBaits: BaitRecommendation[];
   baits: Set<BaitRecommendation>;
   counts: { bait: BaitRecommendation; count: Number }[];
 
   ngOnInit(): void {}
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.route) {
-      this.recommendedBaits = this.getRecommendedBaits(
-        changes.route.currentValue
+      this.recommendedBaits = Array.from(
+        this.getRecommendedBaits(changes.route.currentValue)
       );
     }
   }

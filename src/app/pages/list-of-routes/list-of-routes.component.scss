@@ -72,6 +72,11 @@
   flex: 1 1 auto;
 }
 
+.app-list-of-routes__route-rating {
+  flex: 0 0 auto;
+  margin: 0 1rem 0 0;
+}
+
 .app-list-of-routes__route-destination-name,
 .app-list-of-routes__route-destination-time {
   font-weight: bold;

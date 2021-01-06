@@ -25,6 +25,7 @@ import { FishTableViewComponent } from './components/fish-table-view/fish-table-
 import { TimeOfDayImageComponent } from './components/time-of-day-image/time-of-day-image.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BaitResumeeComponent } from './components/bait-resumee/bait-resumee.component';
+import { StarRecommendationComponent } from './components/star-recommendation/star-recommendation.component';
 
 @NgModule({
   declarations: [
@@ -44,18 +45,17 @@ import { BaitResumeeComponent } from './components/bait-resumee/bait-resumee.com
     FishTableViewComponent,
     TimeOfDayImageComponent,
     HomeComponent,
-    BaitResumeeComponent
+    BaitResumeeComponent,
+    StarRecommendationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
+    })
   ],
-  providers: [
-    TimeService,
-    LocationService,
-    RouteService
-  ],
+  providers: [TimeService, LocationService, RouteService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

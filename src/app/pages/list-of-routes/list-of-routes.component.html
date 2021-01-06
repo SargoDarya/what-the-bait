@@ -25,6 +25,9 @@
           TimeOfDayTranslation.get(route.route.getDayTimeForStop(2))
         }}</span>
       </span>
+      <app-star-recommendation
+          class="app-list-of-routes__route-rating"
+          [points]="route.routeScore"></app-star-recommendation>
       <span class="app-list-of-routes__route-time-frame">
         <ng-container
           *ngFor="let location of route.route.locations; index as i"

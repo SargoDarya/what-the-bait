@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { TimeService } from './time.service';
 import { Route } from '../models/route';
 import { Location, TimeOfDay } from '../enums';
+import { LocationService } from './location.service';
 
 const TWO_HOURS = 1000 * 60 * 60 * 2;
 
@@ -38,6 +38,20 @@ export class RouteService {
     new Route(TimeOfDay.Sunset, [Location.Cieldales, Location.RhotanoSea, Location.RothlytSound]),
   ];
 
+  private routeScores: Map<Route, number> = new Map();
+
+  constructor(
+    private locationService: LocationService
+  ) {
+    this.routes.forEach((route) => {
+      this.routeScores.set(route, this.calculatePotentialRouteScore(route));
+    });
+  }
+
+  public getCalculatedRouteScore(route: Route): number {
+    return this.routeScores.get(route);
+  }
+
   /**
    * Returns a date for a given routeId
    */
@@ -68,5 +82,75 @@ export class RouteService {
     const absoluteRouteId = this.getRouteIdFromTime(time);
 
     return this.getRouteFromRouteId(absoluteRouteId);
+  }
+
+  /**
+   * Returns a best case score for the given route.
+   */
+  private calculatePotentialRouteScore(route: Route): number {
+    return route.locations.reduce((acc, location, index) => {
+      const timeOfDay = route.getDayTimeForStop(index);
+
+      return acc +  this.getPotentialLocationScoreForTime(location, timeOfDay);
+    }, 0);
+  }
+
+  /**
+   * * Following assumptions are made:
+   * - During the spectral current:
+   *   - 1 DH goes to the max scoring fish in HQ
+   *   - 1 DH goes to the max scoring fish in NQ
+   *   - 1 DH goes to the second max scoring fish in NQ if available, otherwise dropped.
+   * - Outside of the current
+   *   - Alternates between the three top fish
+   *   - Hook time rotates through min/max
+   *   - Half the fish caught in HQ
+   *   - Half the fish are caught in NQ
+   */
+  private getPotentialLocationScoreForTime(location: Location, time: TimeOfDay): number {
+    const scores = [];
+    const locationData = this.locationService.getDataForLocation(location);
+    const meanAnimationTime = 3;
+    const spectralTime = 2 * 60;
+    let timeOnStop = 6 * 60 + 30;
+    timeOnStop -= spectralTime;
+
+    // Inside current
+    const spectralFishes = locationData.spectral[ time ].fish;
+    const topSpectralFish = spectralFishes[ 0 ];
+    const secondTopSpectralFish = spectralFishes.length > 1 ? spectralFishes[1] : null;
+
+    scores.push(
+      topSpectralFish.points * spectralFishes[ 0 ].dhBonus * 2,
+      topSpectralFish.points * spectralFishes[ 0 ].dhBonus
+    );
+
+    if (secondTopSpectralFish) {
+      scores.push(secondTopSpectralFish.points * secondTopSpectralFish.dhBonus);
+    }
+
+    // Outside current
+    const topMainFishes = locationData.main.fish.slice(0, 2);
+    let wasLastFishMinHookTime = false;
+    let currentFish = 0;
+    let wasLastFishHQ = false;
+
+    while (timeOnStop > 0) {
+      const fish = topMainFishes[ currentFish ];
+      const fishPoints = fish.points;
+      scores.push(wasLastFishHQ ? fishPoints : fishPoints * 2);
+
+      // Update hook time
+      timeOnStop -= (wasLastFishMinHookTime ? fish.maxBiteTime : fish.minBiteTime) + meanAnimationTime;
+      wasLastFishMinHookTime = !wasLastFishMinHookTime;
+
+      // Update HQ status
+      wasLastFishHQ = !wasLastFishHQ;
+
+      // Rotate fish
+      currentFish = (currentFish + 1) % topMainFishes.length;
+    }
+
+    return scores.reduce((acc, next) => acc + next, 0);
   }
 }

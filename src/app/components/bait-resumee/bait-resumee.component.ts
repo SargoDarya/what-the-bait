@@ -5,7 +5,7 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RouteService } from '../../services/route.service';
 import { LocationService } from '../../services/location.service';
-import { BaitTranslation } from '../../enums';
+import { BaitTranslation, Bait } from '../../enums';
 @Component({
   selector: 'app-bait-resumee',
   templateUrl: './bait-resumee.component.html',
@@ -20,10 +20,10 @@ export class BaitResumeeComponent implements OnInit {
   private BAITS_PER_LOCATION = 20;
   private BAITS_PER_CURRENT = 20;
   public readonly BaitTranslation = BaitTranslation;
-
-  recommendedBaits: Set<Number>;
-  baits: Set<Number>;
-  counts: { bait: BaitRecommendation; count: Number }[];
+  baitRecommendations: BaitRecommendation[];
+  recommendedBaits: Set<number>;
+  baits: Set<number>;
+  counts = new Array<{ bait: Bait; count: number }>();
 
   ngOnInit(): void {}
   ngOnChanges(changes: SimpleChanges): void {
@@ -33,20 +33,30 @@ export class BaitResumeeComponent implements OnInit {
       );
     }
   }
-  getRecommendedBaits(route: Route): Set<Number> {
+  getCount(baitId: number) {
+    let sum = 0;
+    this.counts
+      .filter(count => {
+        count.bait === baitId;
+      })
+      .map(count => {
+        sum += count.count;
+      });
+    return sum;
+  }
+  getRecommendedBaits(route: Route): Set<number> {
     let baits = new Set<number>();
     let counts = [];
     for (let i = 0; i < route.locations.length; i++) {
       const time = route.getDayTimeForStop(i);
-
       route.locations.forEach(location => {
         let data = this.locationService.getDataForLocation(location);
         baits.add(data.main.bait);
-        counts.push({ bait: data.main, count: this.BAITS_PER_LOCATION });
+        counts.push({ bait: data.main.bait, count: this.BAITS_PER_LOCATION });
         if (data.spectral) {
           baits.add(data.spectral[time].bait);
           counts.push({
-            bait: data.spectral[time],
+            bait: data.spectral[time].bait,
             count: this.BAITS_PER_CURRENT
           });
         }

@@ -1,10 +1,11 @@
-<ul>
-  <li *ngFor="let baitRecommendation of recommendedBaits">
-    {{ baitRecommendation }}
-    {{ getCount(baitRecommendation) }}
+<ul class="bait-resumee">
+  <li class="bait-resumee__bait" *ngFor="let baitId of recommendedBaits">
+    <div class="bait-resumee__bait-count">
+      {{ getCount(baitId) }}
+    </div>
     <app-item-image
       class="app-bait-view__bait-image"
-      [itemName]="BaitTranslation.get(baitRecommendation)"
+      [itemName]="BaitTranslation.get(baitId)"
     ></app-item-image>
   </li>
 </ul>

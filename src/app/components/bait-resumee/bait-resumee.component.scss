@@ -1,0 +1,18 @@
+.bait-resumee {
+  display: flex;
+  flex: 0 1 60%;
+  .app-bait-view__bait-image {
+    width: 42px;
+    height: 42px;
+  }
+}
+.bait-resumee__bait {
+  position: relative;
+  display: inline-block;
+}
+.bait-resumee__bait-count {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  z-index: 10;
+}

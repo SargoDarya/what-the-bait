@@ -18,50 +18,49 @@ export class BaitResumeeComponent implements OnInit {
   ) {}
   @Input() route: Route;
   private BAITS_PER_LOCATION = 20;
-  private BAITS_PER_CURRENT = 20;
+  private BAITS_PER_CURRENT = 15;
   public readonly BaitTranslation = BaitTranslation;
   baitRecommendations: BaitRecommendation[];
-  recommendedBaits: Set<number>;
   baits: Set<number>;
   counts = new Array<{ bait: Bait; count: number }>();
 
   ngOnInit(): void {}
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.route) {
-      this.recommendedBaits = this.getRecommendedBaits(
-        changes.route.currentValue
-      );
+      this.calculateRecommendedBaits(changes.route.currentValue);
     }
   }
   getCount(baitId: number) {
     let sum = 0;
     this.counts
       .filter(count => {
-        count.bait === baitId;
+        return count.bait === baitId;
       })
       .map(count => {
         sum += count.count;
       });
     return sum;
   }
-  getRecommendedBaits(route: Route): Set<number> {
-    let baits = new Set<number>();
-    let counts = [];
+  calculateRecommendedBaits(route: Route): void {
+    this.baits = new Set<number>();
+    this.counts = [];
     for (let i = 0; i < route.locations.length; i++) {
+      let location = route.locations[i];
       const time = route.getDayTimeForStop(i);
-      route.locations.forEach(location => {
-        let data = this.locationService.getDataForLocation(location);
-        baits.add(data.main.bait);
-        counts.push({ bait: data.main.bait, count: this.BAITS_PER_LOCATION });
-        if (data.spectral) {
-          baits.add(data.spectral[time].bait);
-          counts.push({
-            bait: data.spectral[time].bait,
-            count: this.BAITS_PER_CURRENT
-          });
-        }
+      let data = this.locationService.getDataForLocation(location);
+      this.baits.add(data.main.bait);
+      this.counts.push({
+        bait: data.main.bait,
+        count: this.BAITS_PER_LOCATION
       });
+      if (data.spectral) {
+        this.baits.add(data.spectral[time].bait);
+        this.counts.push({
+          bait: data.spectral[time].bait,
+          count: this.BAITS_PER_CURRENT
+        });
+      }
     }
-    return baits;
   }
 }

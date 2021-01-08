@@ -8,14 +8,19 @@
 .app-list-of-routes__route {
   font-size: 14px;
   flex-wrap: wrap;
-  background: rgb(43,46,85);
-  background: linear-gradient(180deg, rgba(43,46,85,1) 0%, rgba(32,78,98,1) 50%, rgba(27,90,113,1) 100%);
+  background: rgb(43, 46, 85);
+  background: linear-gradient(
+    180deg,
+    rgba(43, 46, 85, 1) 0%,
+    rgba(32, 78, 98, 1) 50%,
+    rgba(27, 90, 113, 1) 100%
+  );
   cursor: pointer;
   padding: 0;
-  margin: 0 0 .5rem;
-  border-radius: .5rem;
-  border: .25rem solid;
-  border-image: url('/assets/ui/ui-border.png') 5;
+  margin: 0 0 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.25rem solid;
+  border-image: url("/assets/ui/ui-border.png") 5;
 
   &--current,
   &--next {
@@ -27,34 +32,49 @@
       display: block;
       font-weight: bold;
       text-transform: uppercase;
-      padding: .5rem .5rem;
-      border-radius: .25rem .25rem 0 0;
+      padding: 0.5rem 0.5rem;
+      border-radius: 0.25rem 0.25rem 0 0;
       text-shadow: 0 0 2px black;
     }
   }
 
   &--current::before {
-    content: 'Current route';
+    content: "Current route";
     background: rgb(74, 210, 222);
-    background: linear-gradient(0deg, rgba(4, 66, 36, 1) 5%, rgba(9, 131, 71, 1) 63%, rgba(84, 168, 127, 1) 82%, rgba(165, 214, 159, 1) 91%, rgba(153, 222, 127, 1) 100%);
+    background: linear-gradient(
+      0deg,
+      rgba(4, 66, 36, 1) 5%,
+      rgba(9, 131, 71, 1) 63%,
+      rgba(84, 168, 127, 1) 82%,
+      rgba(165, 214, 159, 1) 91%,
+      rgba(153, 222, 127, 1) 100%
+    );
   }
 
   &--next::before {
-    content: 'Next up';
-    background: rgb(43,51,79);
-    background: linear-gradient(0deg, rgba(43,51,79,1) 5%, rgba(75,118,158,1) 63%, rgba(84,134,168,1) 82%, rgba(159,175,214,1) 91%, rgba(127,157,222,1) 100%);
+    content: "Next up";
+    background: rgb(43, 51, 79);
+    background: linear-gradient(
+      0deg,
+      rgba(43, 51, 79, 1) 5%,
+      rgba(75, 118, 158, 1) 63%,
+      rgba(84, 134, 168, 1) 82%,
+      rgba(159, 175, 214, 1) 91%,
+      rgba(127, 157, 222, 1) 100%
+    );
   }
 }
 
 .app-list-of-routes__route-main-info {
-  padding: .5rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
 }
 
 .app-list-of-routes__route-sub-info {
-  padding: .5rem;
+  padding: 0.5rem;
   display: flex;
+  justify-content: space-between;
   line-height: 2;
 }
 
@@ -88,20 +108,26 @@
 
 .app-list-of-routes__time-until-registration-start,
 .app-list-of-routes__remaining-registration-time {
-  padding: .5rem .5rem;
+  padding: 0.5rem 0.5rem;
 }
 
 .app-list-of-routes__route-location {
   display: inline-block;
 }
 
-.app-list-of-routes__route-location + .app-list-of-routes__route-location::before {
-  content: '-';
-  margin: 0 .5rem;
+.app-list-of-routes__route-location
+  + .app-list-of-routes__route-location::before {
+  content: "-";
+  margin: 0 0.5rem;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .app-list-of-routes__route:hover {
-    background: linear-gradient(180deg, lighten(rgba(43,46,85,1), 10%) 0%, rgba(32,78,98,1) 50%, lighten(rgba(27,90,113,1), 10%) 100%);
+    background: linear-gradient(
+      180deg,
+      lighten(rgba(43, 46, 85, 1), 10%) 0%,
+      rgba(32, 78, 98, 1) 50%,
+      lighten(rgba(27, 90, 113, 1), 10%) 100%
+    );
   }
 }

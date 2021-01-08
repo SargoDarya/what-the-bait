@@ -5,7 +5,7 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RouteService } from '../../services/route.service';
 import { LocationService } from '../../services/location.service';
-
+import { BaitTranslation } from '../../enums';
 @Component({
   selector: 'app-bait-resumee',
   templateUrl: './bait-resumee.component.html',
@@ -19,38 +19,39 @@ export class BaitResumeeComponent implements OnInit {
   @Input() route: Route;
   private BAITS_PER_LOCATION = 20;
   private BAITS_PER_CURRENT = 20;
+  public readonly BaitTranslation = BaitTranslation;
 
-  recommendedBaits: BaitRecommendation[];
-  baits: Set<BaitRecommendation>;
+  recommendedBaits: Set<Number>;
+  baits: Set<Number>;
   counts: { bait: BaitRecommendation; count: Number }[];
 
   ngOnInit(): void {}
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.route) {
-      this.recommendedBaits = Array.from(
-        this.getRecommendedBaits(changes.route.currentValue)
+      this.recommendedBaits = this.getRecommendedBaits(
+        changes.route.currentValue
       );
     }
   }
-  getRecommendedBaits(route: Route): Set<BaitRecommendation> {
-    this.baits = new Set();
-    this.counts = [];
+  getRecommendedBaits(route: Route): Set<Number> {
+    let baits = new Set<number>();
+    let counts = [];
     for (let i = 0; i < route.locations.length; i++) {
       const time = route.getDayTimeForStop(i);
 
       route.locations.forEach(location => {
         let data = this.locationService.getDataForLocation(location);
-        this.baits.add(data.main);
-        this.counts.push({ bait: data.main, count: this.BAITS_PER_LOCATION });
+        baits.add(data.main.bait);
+        counts.push({ bait: data.main, count: this.BAITS_PER_LOCATION });
         if (data.spectral) {
-          this.baits.add(data.spectral[time]);
-          this.counts.push({
+          baits.add(data.spectral[time].bait);
+          counts.push({
             bait: data.spectral[time],
             count: this.BAITS_PER_CURRENT
           });
         }
       });
     }
-    return this.baits;
+    return baits;
   }
 }
